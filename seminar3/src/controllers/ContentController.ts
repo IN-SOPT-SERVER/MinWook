@@ -1,4 +1,3 @@
-import { ContentInterface } from "./../interfaces/ContentInterface";
 import { Request, Response } from "express";
 import ContentService from "../services/ContentService";
 
