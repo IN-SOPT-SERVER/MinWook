@@ -1,0 +1,19 @@
+{
+  "name": "seminar2-express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "_comment": "이런식으로 주석처리용ㅋㅋ",
+    "dev": "nodemon",
+    "build": "tsc && node dist"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.8.3",
+    "nodemon": "^2.0.20"
+  }
+}
