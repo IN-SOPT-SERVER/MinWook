@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id(map: "user_pk") @unique(map: "user_id_uindex") @default(autoincrement())
+  userName String
+  age      Int?
+  email    String? @db.VarChar(200)
+}
+
+model contents {
+  id                     Int    @id(map: "contents_pk") @unique(map: "contents_id_uindex") @default(autoincrement())
+  title                  String @unique(map: "contents_contentname_uindex") @db.VarChar(50)
+  time                   Int
+  image_url              String @db.VarChar(200)
+  content_actor_genre_id Int
+}
+
+model actor {
+  id   Int    @id(map: "actor_pk") @unique(map: "actor_id_uindex") @default(autoincrement())
+  name String @db.VarChar(20)
+}
+
+model content_actor_genre {
+  id          Int @id(map: "content_actor_genre_pk") @unique(map: "content_actor_genre_id_uindex") @default(autoincrement())
+  actor_id    Int
+  genre_id    Int
+  contents_id Int
+}
+
+model genre {
+  id   Int @id(map: "genre_pk") @unique(map: "genre_id_uindex") @default(autoincrement())
+  name Int @unique(map: "genre_name_uindex")
+}
