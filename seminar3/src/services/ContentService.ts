@@ -1,14 +1,27 @@
-const json = require("./../database/content.json");
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
 const getContent = async (contentId: string) => {
-  return json[contentId];
+  const content = await prisma.contents.findUnique({
+    where: {
+      id: contentId,
+    },
+  });
+  return content;
 };
 
-const getEpisode = async (episodeId: string) => {
-  return json[episodeId];
+const createContent = async (title: string, time: number, cag_id: number) => {
+  const data = await prisma.contents.({
+    data: {
+      title,
+      time,
+      cag_id,
+    },
+  });
+  return data;
 };
 
 export default {
   getContent,
-  getEpisode,
+  createContent
 };
